@@ -16,17 +16,17 @@ public class HelloWorldAPITest {
      - Then status code should be 200
      - And "Hello World!" message should be in the response
 
-     Send GET Request to Hello World API
-     Then response status code is 200
-     And response body contains "Hello World!"
-
      */
 
     @DisplayName("Test1 Hello World API Test")
-    @Test  //junit-jupiter
+
+    @Test  //junit-jupiter.api
+
     public void HelloWorldTest() {
+
         String url = "https://sandbox.api.service.nhs.uk/hello-world/hello/world";
 
+        //1- Send GET Request to Hello World API
         //RestAssured Library
         Response response = RestAssured.when().get(url);
         //Response -> interface
@@ -35,8 +35,8 @@ public class HelloWorldAPITest {
 
         response.prettyPrint(); //to print the results out
 
+        //2-Then response status code is 200
         //Assertion
-
         System.out.println("response.statusCode() = " + response.statusCode());
         System.out.println("response.contentType() = " + response.contentType());
 
@@ -44,6 +44,7 @@ public class HelloWorldAPITest {
         Assertions.assertEquals(200,response.statusCode());
         Assertions.assertEquals("application/json; charset=UTF-8", response.contentType());
 
+        //3-And response body contains "Hello World!"
         //response body validation
         //There are couples methods to do that. For now, We can use the String structure.
         // first convert it to String . response.asString();
