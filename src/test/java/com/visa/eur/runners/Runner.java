@@ -8,9 +8,13 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"json:target/cucumber.json",
                 "html:target/default-html-reports"},
+
         features = "src/test/resources/features/",
+
         glue = "com/visa/eur/step_definitions/",
+
         tags = "@hello",
+
         dryRun = false
 )
 
