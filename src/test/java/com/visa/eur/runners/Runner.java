@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 
         glue = "com/visa/eur/step_definitions/",
 
-        tags = "@hello",
+        tags = "",
 
         dryRun = false
 )
