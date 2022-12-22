@@ -10,7 +10,7 @@ public class PojoSample {
      {
         "id" : 1
         "name" : "austin"
-        "city" : "male"
+        "city" : "new york"
      }
      */
     private int id;
