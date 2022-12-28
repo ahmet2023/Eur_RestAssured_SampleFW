@@ -1,11 +1,19 @@
 package com.visa.eur.tests;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
+@Tag("hello")
 public class HelloWorldAPITest {
 
     /**
@@ -25,6 +33,15 @@ public class HelloWorldAPITest {
     public void HelloWorldTest() {
 
         String url = "https://sandbox.api.service.nhs.uk/hello-world/hello/world";
+
+        //Short SOLUTION
+        RestAssured.when().get(url).
+                then().
+                assertThat().statusCode(200).
+                contentType(ContentType.JSON).
+                body("message", is("Hello World!"));
+
+        //ANOTHER SOLUTION
 
         //1- Send GET Request to Hello World API
         //RestAssured Library

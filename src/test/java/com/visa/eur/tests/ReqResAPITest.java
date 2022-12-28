@@ -1,14 +1,12 @@
 package com.visa.eur.tests;
 
-import com.visa.eur.utilities.ConfigurationReader;
+
 import io.restassured.response.Response;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static io.restassured.RestAssured.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+
 
 /**  TEST CASE
  *
@@ -20,12 +18,16 @@ import static org.hamcrest.Matchers.*;
  * And Header Content type should be json
  */
 
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Tag("reqAPI")
 public class ReqResAPITest {
 
     String url = "https://reqres.in/api/users";
     //String url = ConfigurationReader.getProperty("reqres.api");
 
     @DisplayName("GET all users")
+    @Order(2)
     @Test
     public void usersGetTest() {
         //When User sends GET Request
@@ -55,6 +57,7 @@ public class ReqResAPITest {
 //    And Response body should contain user info "Charles"
 
     @DisplayName("GET single user")
+    @Order(1)
     @Test
     public void getSingleUserApiTest() {
         Response response = when().get(url + "/5");
@@ -74,6 +77,7 @@ public class ReqResAPITest {
 //    And Response body should contain "{}"
 
     @DisplayName("GET request to non existing user")
+    @Order(3)
     @Test
     public void getSingleUserNegativeApiTest() {
         Response response = when().get(url + "/50");
