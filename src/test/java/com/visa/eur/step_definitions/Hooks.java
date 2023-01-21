@@ -1,10 +1,13 @@
 package com.visa.eur.step_definitions;
 
+import com.visa.eur.utilities.ConfigurationReader;
+import com.visa.eur.utilities.DB_Util;
 import cucumber.api.Scenario;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
 import java.sql.Driver;
+import java.util.concurrent.TimeUnit;
 
 public class Hooks {
 
@@ -18,6 +21,7 @@ public class Hooks {
 //    public void afterDbHook() {
 //        System.out.println("closing database connection");
 //        DBUtils.destroyConnection();
+    //        DB_Util.destroy();
 //    }
 //
 //    @Before("@ui")
@@ -25,6 +29,12 @@ public class Hooks {
 //        // we put a logic that should apply to every scenario
 //        System.out.println("Setting up webdriver");
 //        Driver.getDriver();
+    //or
+  //          System.out.println("this is coming from BEFORE");
+//        Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        Driver.getDriver().manage().window().maximize();
+//        Driver.getDriver().get(ConfigurationReader.getProperty("library_url"));
+
 //
 //    }
 //
