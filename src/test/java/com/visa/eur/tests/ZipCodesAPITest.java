@@ -37,15 +37,16 @@ public class ZipCodesAPITest {
     public void zipCodeJsonPathTest() {
         Response response = given().accept(ContentType.JSON)
                 .and().pathParam("country","us")
-                .and().pathParam("postal-code", "78729")
+                .and().pathParam("postal-code", "78665")
                 .when().get("/{country}/{postal-code}");
+
         response.prettyPrint();
 
         assertEquals(200, response.statusCode());
 
         //assign response json payload/body to Jsonpath
         JsonPath jsonPath = response.jsonPath();
-        verifyZipCode(jsonPath, "78729");
+        verifyZipCode(jsonPath, "78665");
         //navigate the json and print/assert country value
         System.out.println("country name = " + jsonPath.getString("country"));
         assertEquals("United States" , jsonPath.getString("country"));
@@ -53,11 +54,11 @@ public class ZipCodesAPITest {
         //navigate the json and print/assert post code value
         System.out.println("post code = " + jsonPath.getString("'post code'"));
         String zipCode = jsonPath.getString("'post code'");
-        assertEquals("78729", zipCode);
+        assertEquals("78665", zipCode);
 
         //verify place name
         System.out.println("place name = " + jsonPath.getString("places[0].'place name'"));
-        assertEquals("Austin" , jsonPath.getString("places[0].'place name'"));
+        assertEquals("Sandy" , jsonPath.getString("places[0].'place name'"));
 
         //verify state is "Texas"
         String state = jsonPath.getString("places[0].state");

@@ -16,7 +16,7 @@ import static org.hamcrest.Matchers.*;
 @Tag("hello")
 public class HelloWorldAPITest {
 
-    /**
+    /** TEST CASE
 
      - When user sends GET Request to :
      https://sandbox.api.service.nhs.uk/hello-world/hello/world
@@ -35,8 +35,8 @@ public class HelloWorldAPITest {
         String url = "https://sandbox.api.service.nhs.uk/hello-world/hello/world";
 
         //Short SOLUTION
-        RestAssured.when().get(url).
-                then().
+        when().get(url).
+        then().
                 assertThat().statusCode(200).
                 contentType(ContentType.JSON).
                 body("message", is("Hello World!"));
